@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Preview</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bitcoin Price Prediction Using LSTM Model</h1>
+        <br><br>
+        <h2>Dataset Preview</h2>
+        <div>
+            {{ preview_table|safe }}
+        </div>
+        <form id="trainForm" action="/metrics_and_plot" method="get">
+            <button type="button" class="train-button" onclick="trainModel()">Train Model</button>
+        </form>
+        <p id="statusMessage"></p>
+    </div>
+
+    <script>
+        function trainModel() {
+            // Show "Please wait" message
+            document.getElementById('statusMessage').innerHTML = 'Please wait, model is training...';
+
+            // Submit the form after a brief delay (simulating model training)
+            setTimeout(function() {
+                document.getElementById('trainForm').submit();
+            }, 2000); // Change 2000 to the actual time it takes to train the model
+
+            // Show "Model training completed" message after a longer delay
+            setTimeout(function() {
+                document.getElementById('statusMessage').innerHTML = 'Model training completed';
+            }, 5000); // Change 5000 to the actual time it takes to train the model
+        }
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+        color: #007bff;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Button Styles */
+.train-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    cursor: pointer;
+}
+
+.train-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+</style>
+

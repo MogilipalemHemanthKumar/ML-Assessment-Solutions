@@ -1,0 +1,87 @@
+<!-- Your HTML file -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='predicted_price_style.css') }}">
+    <title>Predicted Bitcoin Price</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bitcoin Price Prediction Using LSTM Model</h1>
+        <br><br>
+        <!-- Date input field -->
+        <form action="{{ url_for('predicted_price') }}" method="POST">
+            <label for="date_input">Enter Date:</label>
+            <input type="date" id="date_input" name="date_input" required>
+            <button type="submit">Predict Price</button>
+        </form>
+
+       {% if prediction_message  is defined %}
+            <p>Predicted Bitcoin Price: {{ prediction_message[0][0] }}</p>
+        {% endif %}
+
+    </div>
+</body>
+</html>
+
+<style>
+    /* predicted_price_style.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 20px;
+    color: #333;
+}
+
+</style>
